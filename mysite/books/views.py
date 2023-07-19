@@ -1,9 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from .models import Book
 
 def index(request):
-    return HttpResponse("<h1>This is the books homepage</h1>")
+    all_books = Book.objects.all()
+    html= ''
+    for book in all_books:
+        url = '/books/'+str(book.id)+'/'
+        html+='<a href="'+url+'">'+str(book.name)+'</a><br> '
+    return HttpResponse(html)
 
 
 def detail(request, book_id):
