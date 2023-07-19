@@ -1,6 +1,14 @@
-<ul>
-    {% for book in all_books%}
-<!--        <li><a href="/books/{{book.id}}">{{book.name}}</a></li>-->
-        <li><a href="{% url 'detail' book.id %}">{{book.name}}</a></li>
-    {% endfor %}
-</ul>
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'books/style.css' %}">
+    </head>
+    <body>
+        <ul>
+        {% for book in all_books%}
+    <!--        <li><a href="/books/{{book.id}}">{{book.name}}</a></li>-->
+            <li><a href="{% url 'books:detail' book.id %}">{{book.name}}</a></li>
+        {% endfor %}
+        </ul>
+    </body>
+</html>
